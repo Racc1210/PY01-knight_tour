@@ -1,0 +1,1 @@
+// Casilla individual (color, número de visita)

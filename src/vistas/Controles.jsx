@@ -1,0 +1,1 @@
+// Botones: iniciar, pausar, resetear, elegir N

@@ -1,0 +1,1 @@
+// Renderiza el tablero completo
