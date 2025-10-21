@@ -1,1 +1,143 @@
-/* Estilos para controles */
+.controles-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.control-grupo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-grupo label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #8b949e;
+}
+
+.selector-tamano {
+    padding: 8px 12px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #21262d;
+    color: #e6edf3;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 80px;
+    transition: all 0.2s ease;
+}
+
+.selector-tamano:hover {
+    border-color: #58a6ff;
+}
+
+.selector-tamano:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 15px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Estilos personalizados para checkboxes similares al ejemplo */
+.checkbox-custom {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #30363d;
+    border-radius: 4px;
+    background-color: #21262d;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-custom:hover {
+    border-color: #58a6ff;
+    background-color: rgba(88, 166, 255, 0.1);
+}
+
+.checkbox-custom:checked {
+    background-color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+.checkbox-custom:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    font-size: 13px;
+    color: #8b949e;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+}
+
+.posicion-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.input-posicion {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #21262d;
+    color: #e6edf3;
+    text-align: center;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.input-posicion:hover {
+    border-color: #58a6ff;
+}
+
+.input-posicion:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+}
+
+.boton-iniciar {
+    padding: 12px 24px;
+    background-color: #238636;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boton-iniciar:hover {
+    background-color: #2ea043;
+    transform: translateY(-1px);
+}
+
+.boton-iniciar:active {
+    transform: translateY(1px);
+}

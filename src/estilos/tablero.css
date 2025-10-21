@@ -1,1 +1,55 @@
-/* Estilos para el tablero */
+.tablero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.tablero-grid {
+    display: grid;
+    gap: 1px;
+    border: 3px solid #58a6ff;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #58a6ff;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0 8px 32px rgba(88, 166, 255, 0.3);
+}
+
+.casilla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.casilla-clara {
+    background-color: #f0d9b5;
+}
+
+.casilla-oscura {
+    background-color: #b58863;
+}
+
+.casilla:hover {
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+
+.numero-movimiento {
+    font-weight: 700;
+    font-size: 16px;
+    color: #2d3748;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
