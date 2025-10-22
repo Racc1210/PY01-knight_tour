@@ -1,4 +1,4 @@
-# Tarea 2 - Algoritmo genetico con JavaScript y React
+# Proyecto 1 - Knight's tour con Backtracking
 
 ## Instituto Tecnológico de Costa Rica
 
@@ -20,3 +20,4 @@ Segundo semestre de 2025 - Grupo 60
 
 - **19 de octubre**: Este dia lo dedicamos a establecer como implementar el patrón de diseño MVC, estableciendo  
   como dividir las responsabilidades del codigo y el enfoque que vamos a implementar, a lo que decidimos trabajar con clases. Este día tambien se implementaron las versiones iniciales de las clases: Casilla, Caballo y tablero.
+- **20 de octubre**: Este día se dedicó a desarrollar la interfaz gráfica inicial del programa, se modificaron las estructuras de las clases Casilla y Caballo, junto con la adicion de la lógica del algoritmo de backtracking

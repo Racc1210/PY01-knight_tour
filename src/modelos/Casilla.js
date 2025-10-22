@@ -22,8 +22,13 @@ export class Casilla {
     /** @type {boolean} Indica si la casilla ha sido visitada por el caballo. */
     this.visitada = false;
     
-    /** @type {Array<Casilla>} Lista de casillas vecinas accesibles desde esta posición. */
-    this.vecinos = [];
+    /** 
+     * @type {Array<{casilla: Casilla, intentado: boolean}>} 
+     * Lista de objetos que representan las casillas vecinas accesibles 
+     * junto con un indicador de si ya fueron intentadas desde esta casilla.
+     */
+      this.vecinos = [];
+
   }
 
   /**
@@ -31,7 +36,7 @@ export class Casilla {
    * @param {Casilla} casilla - La casilla vecina que se va a agregar.
    */
   agregarVecino(casilla) {
-    this.vecinos.push(casilla);
+    this.vecinos.push({casilla, intentado: false});
   }
 }
 
