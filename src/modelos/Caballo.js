@@ -2,6 +2,11 @@
  * @fileoverview Clase que representa el caballo en el tablero y maneja su movimiento.
  */
 
+/**
+ * Representa el caballo con su posición actual, historial de movimientos
+ * y estadísticas del recorrido.
+ * @class
+ */
 export class Caballo {
   /**
    * Crea una nueva instancia del Caballo.
@@ -43,16 +48,16 @@ export class Caballo {
    */
   avanzarA(nuevaCasilla) {
     // marcar que desde la casilla actual se intentó este vecino
-    for (let v of this.posicionActual.vecinos) {
-      if (v.casilla === nuevaCasilla) {
-        v.intentado = true;
+    for (let vecino of this.posicionActual.vecinos) {
+      if (vecino.casilla === nuevaCasilla) {
+        vecino.intentado = true;
         break;
       }
     }
 
     this.posicionActual = nuevaCasilla;
     
-    // Limitar el historial para evitar overflow (máximo 10,000 entradas)
+    // Limitar el historial para evitar overflow
     if (this.historial.length < 10000) {
       this.historial.push(nuevaCasilla);
     }
@@ -80,9 +85,9 @@ export class Caballo {
       }
 
       // resetear el intento en el vecino
-      for (let v of anterior.vecinos) {
-        if (v.casilla === ultima) {
-          v.intentado = false;
+      for (let vecino of anterior.vecinos) {
+        if (vecino.casilla === ultima) {
+          vecino.intentado = false;
           break;
         }
       }
@@ -113,8 +118,8 @@ export class Caballo {
     }
     
     // Reiniciar estado
-    this.historial = [casillaInicial];    // historial completo
-    this.solucion = [casillaInicial];     // camino válido
+    this.historial = [casillaInicial];    
+    this.solucion = [casillaInicial];     
     this.posicionActual = casillaInicial;
     this.movimientos = 0;
     this.retrocesos = 0;
