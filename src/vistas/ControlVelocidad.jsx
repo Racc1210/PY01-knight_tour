@@ -1,43 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../estilos/control-velocidad.css';
 
-function ControlVelocidad({ onPausar, onReiniciar }) {
-    const [velocidad, setVelocidad] = useState(2);
+function ControlVelocidad({ 
+    velocidadInicial = 1,
+    onCambioVelocidad = null,
+    onPausar = null,
+    onReanudar = null,
+    onReiniciar = null,
+    miniTableroSolucion = null
+}) {
+    const velocidadesDisponibles = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000];
+    const [velocidad, setVelocidad] = useState(velocidadInicial);
+    const [pausado, setPausado] = useState(false);
 
-    const velocidades = [
-        { valor: 1, etiqueta: '1x' },
-        { valor: 2, etiqueta: '2x' },
-        { valor: 3, etiqueta: '3x' },
-        { valor: 4, etiqueta: '4x' }
-    ];
+    useEffect(() => {
+        if (onCambioVelocidad) {
+            onCambioVelocidad(velocidad);
+        }
+    }, [velocidad, onCambioVelocidad]);
+
+    const manejarCambioVelocidad = (nuevaVelocidad) => {
+        setVelocidad(nuevaVelocidad);
+    };
+
+    const manejarPausaReanudar = () => {
+        if (pausado) {
+            if (onReanudar) onReanudar();
+        } else {
+            if (onPausar) onPausar();
+        }
+        setPausado(!pausado);
+    };
+
+    const manejarReiniciar = () => {
+        if (onReiniciar) onReiniciar();
+        setPausado(false);
+    };
 
     return (
         <div className="control-velocidad-container">
-            <h3>Control</h3>
+            <h3>Velocidad de movimiento</h3>
             
             <div className="velocidad-section">
-                <label>Velocidad (10 mov/s)</label>
-                <div className="velocidad-opciones">
-                    {velocidades.map((opcion) => (
-                        <button
-                            key={opcion.valor}
-                            className={`velocidad-boton ${velocidad === opcion.valor ? 'activo' : ''}`}
-                            onClick={() => setVelocidad(opcion.valor)}
-                        >
-                            {opcion.etiqueta}
-                        </button>
-                    ))}
+                <div className="velocidad-info">
+                    <label>{velocidad} mov/seg</label>
+                </div>
+
+                <div className="velocidad-slider-container">
+                    <input
+                        type="range"
+                        min="0"
+                        max={velocidadesDisponibles.length - 1}
+                        step="1"
+                        value={velocidadesDisponibles.indexOf(velocidad)}
+                        onChange={(e) => manejarCambioVelocidad(velocidadesDisponibles[parseInt(e.target.value)])}
+                        className="slider"
+                    />
+                    <div className="slider-marcas">
+                        <span>1</span>
+                        <span>10</span>
+                        <span>20</span>
+                        <span>30</span>
+                        <span>40</span>
+                        <span>50</span>
+                        <span>60</span>
+                        <span>70</span>
+                        <span>80</span>
+                        <span>90</span>
+                        <span>100</span>
+                        <span>1000</span>
+
+                    </div>
                 </div>
             </div>
-            
+
             <div className="botones-control">
-                <button className="boton-control pausar" onClick={onPausar}>
-                    Pausar
+                <button 
+                    className={`boton-control ${pausado ? 'reanudar' : 'pausar'}`}
+                    onClick={manejarPausaReanudar}
+                >
+                    {pausado ? '▶ Reanudar' : '⏸ Pausar'}
                 </button>
-                <button className="boton-control reiniciar" onClick={onReiniciar}>
-                    Reiniciar
+                
+                <button 
+                    className="boton-control reiniciar"
+                    onClick={manejarReiniciar}
+                >
+                    ← Reiniciar
                 </button>
             </div>
+
+            {miniTableroSolucion && (
+                <div className="mini-tablero-section">
+                    <h4>Solución Final</h4>
+                    <div className="mini-tablero-container">
+                        {miniTableroSolucion}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

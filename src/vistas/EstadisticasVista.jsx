@@ -2,11 +2,16 @@ import React from 'react';
 import '../estilos/estadisticas.css';
 
 function EstadisticasVista({ estadisticas }) {
-    const { movimientos, retrocesos, progreso } = estadisticas;
+    const { tiempoEjecucion, movimientos, retrocesos, progreso } = estadisticas;
 
     return (
         <div className="estadisticas-container">
             <h3>Estadísticas</h3>
+            
+            <div className="estadistica-item">
+                <label>Tiempo de ejecución</label>
+                <span className="estadistica-valor">{tiempoEjecucion || '0.0s'}</span>
+            </div>
             
             <div className="estadistica-item">
                 <label>Movimientos</label>
