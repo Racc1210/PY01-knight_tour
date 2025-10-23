@@ -4,30 +4,55 @@ import TableroVista from './TableroVista.jsx';
 import Controles from './Controles.jsx';
 import ControlVelocidad from './ControlVelocidad.jsx';
 import MiniTablero from './MiniTablero.jsx';
+import { useEstadoTablero } from '../controladores/useEstadoTablero.js';
+import { useEstadisticas } from '../controladores/useEstadisticas.js';
+import { useAnimacionBacktracking } from '../controladores/useAnimacionBacktracking.js';
 
 /**
  * Componente principal de la aplicación.
  * Usa custom hooks para gestionar estado de forma modular.
  */
 function App() {
-
     const TAMANO_INICIAL = 5;
-    const VELOCIDAD_INICIAL = 1; 
+    const VELOCIDAD_INICIAL = 1; // movimientos por segundo
+
+
+    const tablero = useEstadoTablero(TAMANO_INICIAL);
+    const estadisticas = useEstadisticas();
+    const animacion = useAnimacionBacktracking(tablero, estadisticas, VELOCIDAD_INICIAL);
+    
+    const manejarIniciar = (config) => {
+        const { tamano, recorridoCerrado, filaInicial, columnaInicial } = config;
+        animacion.iniciar(tamano, recorridoCerrado, filaInicial, columnaInicial);
+    };
+
+    const manejarCambioTamano = (nuevoTamano) => {
+        if (!animacion.animacionActiva) {
+            tablero.cambiarTamano(nuevoTamano);
+        }
+    };
+
+    const manejarSeleccionCasilla = (fila, columna) => {
+        console.log('📍 Seleccionando casilla:', { fila, columna, animacionActiva: animacion.animacionActiva });
+        if (!animacion.animacionActiva) {
+            tablero.seleccionarPosicion(fila, columna);
+        }
+    };
+
+    const manejarCambioInput = (posicion) => {
+        if (!animacion.animacionActiva) {
+            tablero.seleccionarPosicion(posicion.fila, posicion.columna);
+        }
+    };
 
     
-    const tablero = null;
-    const estadisticas = null;
-    const animacion = null;
-
-  
-
 
     return (
         <div className="app-container">
             <div className="layout-principal">
                 {/* Panel izquierdo: Estadísticas */}
                 <div className="panel-izquierdo">
-                    <EstadisticasVista estadisticas="0" />
+                    <EstadisticasVista estadisticas={estadisticas.estadisticas} />
                 </div>
                 
                 {/* Panel central: Tablero */}
@@ -39,7 +64,7 @@ function App() {
                         casillasBacktracking={tablero.casillasBacktracking}
                         numerosBacktracking={tablero.numerosBacktracking}
                         posiblesMovimientos={tablero.posiblesMovimientos}
-                        
+                        onCasillaClick={manejarSeleccionCasilla}
                     />
                 </div>
                 
@@ -53,10 +78,22 @@ function App() {
                             onReiniciar={animacion.reiniciar}
                             onCambioVelocidad={animacion.cambiarVelocidad}
                             miniTableroSolucion={
-                                <MiniTablero 
-                                    tamano={tablero.solucionFinal.tamano}
-                                    solucion={tablero.solucionFinal.solucion}
-                                />
+                                !animacion.sinSolucion ? (
+                                    <MiniTablero 
+                                        tamano={tablero.solucionFinal.tamano}
+                                        solucion={tablero.solucionFinal.solucion}
+                                    />
+                                ) : (
+                                    <div style={{ 
+                                        color: '#f56565', 
+                                        textAlign: 'center', 
+                                        padding: '20px',
+                                        fontSize: '14px'
+                                    }}>
+                                        No se encontró solución<br/>
+                                        Mostrando proceso de búsqueda
+                                    </div>
+                                )
                             }
                         />
                     ) : (
@@ -80,7 +117,12 @@ function App() {
             {/* Panel inferior: Controles principales */}
             <div className="panel-inferior">
                 <Controles 
-    
+                    onIniciar={manejarIniciar} 
+                    onDetener={animacion.detener}
+                    animacionActiva={animacion.animacionActiva}
+                    onCambioTamano={manejarCambioTamano}
+                    posicionSeleccionada={tablero.posicionSeleccionada}
+                    onCambioInput={manejarCambioInput}
                 />
             </div>
         </div>

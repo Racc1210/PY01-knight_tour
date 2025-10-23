@@ -8,7 +8,6 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
     const [filaInicial, setFilaInicial] = useState('');
     const [columnaInicial, setColumnaInicial] = useState('');
 
-    // Actualizar inputs cuando se selecciona una casilla desde el tablero
     useEffect(() => {
         if (posicionSeleccionada !== null) {
             setFilaInicial(posicionSeleccionada.fila.toString());
@@ -22,7 +21,6 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
         const columna = parseInt(columnaInicial);
         const n = parseInt(tamano.split('x')[0]);
         
-        // Si ambos valores son válidos, notificar al padre
         if (!isNaN(fila) && !isNaN(columna) && fila >= 0 && fila < n && columna >= 0 && columna < n && onCambioInput) {
             onCambioInput({ fila, columna });
         }
@@ -34,14 +32,12 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
         const columna = parseInt(valor);
         const n = parseInt(tamano.split('x')[0]);
         
-        // Si ambos valores son válidos, notificar al padre
         if (!isNaN(fila) && !isNaN(columna) && fila >= 0 && fila < n && columna >= 0 && columna < n && onCambioInput) {
             onCambioInput({ fila, columna });
         }
     };
 
     const manejarIniciar = () => {
-        // Validar inputs
         const fila = parseInt(filaInicial);
         const columna = parseInt(columnaInicial);
         const n = parseInt(tamano.split('x')[0]);
@@ -56,10 +52,8 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
             return;
         }
         
-        // Determinar tipo de recorrido
         const esCerrado = recorridoCerrado && !recorridoAbierto;
         
-        // Enviar configuración al App
         onIniciar({
             tamano,
             recorridoCerrado: esCerrado,
@@ -70,7 +64,6 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
 
     const manejarCambioTamano = (nuevoTamano) => {
         setTamano(nuevoTamano);
-        // Notificar al componente padre para actualizar el tablero inmediatamente
         if (onCambioTamano) {
             const n = parseInt(nuevoTamano.split('x')[0]);
             onCambioTamano(n);
