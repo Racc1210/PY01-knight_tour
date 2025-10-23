@@ -57,15 +57,16 @@ export class Caballo {
 
     this.posicionActual = nuevaCasilla;
     
-    // Limitar el historial para evitar overflow
-    if (this.historial.length < 10000) {
+    
+    if (this.historial.length < 100_000_000) {
       this.historial.push(nuevaCasilla);
     }
     
-    this.solucion.push(nuevaCasilla);    // camino actual válido
+    this.solucion.push(nuevaCasilla); 
     this.movimientos++;
     nuevaCasilla.visitada = true;
     this.casillasVisitadas++;
+    
   }
 
   /**
@@ -79,8 +80,8 @@ export class Caballo {
 
       const anterior = this.solucion[this.solucion.length - 1];
 
-      // Registrar retroceso con límite para evitar overflow
-      if (this.historial.length < 10000) {
+      
+      if (this.historial.length < 100_000_000) {
         this.historial.push(anterior);
       }
 
@@ -95,6 +96,7 @@ export class Caballo {
       this.posicionActual = anterior;
       this.retrocesos++;
       this.casillasVisitadas--;
+      
     }
   }
 
@@ -117,7 +119,6 @@ export class Caballo {
       this.solucion[i].visitada = false;
     }
     
-    // Reiniciar estado
     this.historial = [casillaInicial];    
     this.solucion = [casillaInicial];     
     this.posicionActual = casillaInicial;

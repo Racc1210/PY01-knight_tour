@@ -3,6 +3,7 @@
  */
 
 import { Casilla } from './Casilla.js';
+import { sonCoordenadasValidasEnTablero } from '../utilidades/auxiliares.js';
 
 /**
  * Representa un tablero de ajedrez con casillas interconectadas según
@@ -54,8 +55,7 @@ export class Tablero {
           const columnaCasilla = columna + movimientosColumna[i];
           
           // Verificar que la nueva posición esté dentro del tablero
-          if (filaCasilla >= 0 && filaCasilla < this.n && 
-              columnaCasilla >= 0 && columnaCasilla < this.n) {
+          if (sonCoordenadasValidasEnTablero(filaCasilla, columnaCasilla, this.n)) {
             this.casillas[fila][columna].agregarVecino(
               this.casillas[filaCasilla][columnaCasilla]
             );
@@ -73,7 +73,7 @@ export class Tablero {
    * @throws {Error} Si las coordenadas están fuera del tablero.
    */
   obtenerCasilla(fila, columna) {
-    if (fila < 0 || fila >= this.n || columna < 0 || columna >= this.n) {
+    if (!sonCoordenadasValidasEnTablero(fila, columna, this.n)) {
       throw new Error(`Posición fuera del tablero: (${fila}, ${columna})`);
     }
     return this.casillas[fila][columna];

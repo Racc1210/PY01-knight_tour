@@ -1,1 +1,0 @@
-// Intermediario entre las capas de vista (interfaz) y modelo (logica)

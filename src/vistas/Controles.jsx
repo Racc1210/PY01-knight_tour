@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { validarCoordenadas, extraerTamanoTablero } from '../utilidades/auxiliares.js';
 import '../estilos/controles.css';
 
-function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTamano, posicionSeleccionada = null, onCambioInput = null }) {
+function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActiva = false, onCambioTamano, posicionSeleccionada = null, onCambioInput = null }) {
     const [tamano, setTamano] = useState('5x5');
     const [recorridoCerrado, setRecorridoCerrado] = useState(false);
     const [recorridoAbierto, setRecorridoAbierto] = useState(true);
@@ -17,38 +18,31 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
 
     const manejarCambioFila = (valor) => {
         setFilaInicial(valor);
-        const fila = parseInt(valor);
-        const columna = parseInt(columnaInicial);
-        const n = parseInt(tamano.split('x')[0]);
+        const validacion = validarCoordenadas(valor, columnaInicial, tamano);
         
-        if (!isNaN(fila) && !isNaN(columna) && fila >= 0 && fila < n && columna >= 0 && columna < n && onCambioInput) {
-            onCambioInput({ fila, columna });
+        if (validacion.validas && onCambioInput) {
+            onCambioInput({ fila: validacion.fila, columna: validacion.columna });
         }
     };
 
     const manejarCambioColumna = (valor) => {
         setColumnaInicial(valor);
-        const fila = parseInt(filaInicial);
-        const columna = parseInt(valor);
-        const n = parseInt(tamano.split('x')[0]);
+        const validacion = validarCoordenadas(filaInicial, valor, tamano);
         
-        if (!isNaN(fila) && !isNaN(columna) && fila >= 0 && fila < n && columna >= 0 && columna < n && onCambioInput) {
-            onCambioInput({ fila, columna });
+        if (validacion.validas && onCambioInput) {
+            onCambioInput({ fila: validacion.fila, columna: validacion.columna });
         }
     };
 
     const manejarIniciar = () => {
-        const fila = parseInt(filaInicial);
-        const columna = parseInt(columnaInicial);
-        const n = parseInt(tamano.split('x')[0]);
+        const validacion = validarCoordenadas(filaInicial, columnaInicial, tamano);
         
-        if (isNaN(fila) || isNaN(columna)) {
-            alert('Por favor ingrese números válidos para la posición inicial');
-            return;
-        }
-        
-        if (fila < 0 || fila >= n || columna < 0 || columna >= n) {
-            alert(`La posición debe estar entre 0 y ${n-1} para un tablero ${tamano}`);
+        if (!validacion.validas) {
+            if (validacion.fila === null || validacion.columna === null) {
+                alert('Por favor ingrese números válidos para la posición inicial');
+            } else {
+                alert(`La posición debe estar entre 0 y ${validacion.n-1} para un tablero ${tamano}`);
+            }
             return;
         }
         
@@ -57,15 +51,15 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
         onIniciar({
             tamano,
             recorridoCerrado: esCerrado,
-            filaInicial: fila,
-            columnaInicial: columna
+            filaInicial: validacion.fila,
+            columnaInicial: validacion.columna
         });
     };
 
     const manejarCambioTamano = (nuevoTamano) => {
         setTamano(nuevoTamano);
         if (onCambioTamano) {
-            const n = parseInt(nuevoTamano.split('x')[0]);
+            const n = extraerTamanoTablero(nuevoTamano);
             onCambioTamano(n);
         }
     };
@@ -139,7 +133,7 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
                         onChange={(e) => manejarCambioFila(e.target.value)}
                         className="input-posicion"
                         min="0"
-                        max={parseInt(tamano.split('x')[0]) - 1}
+                        max={extraerTamanoTablero(tamano) - 1}
                     />
                     <input
                         type="number"
@@ -148,12 +142,12 @@ function Controles({ onIniciar, onDetener, animacionActiva = false, onCambioTama
                         onChange={(e) => manejarCambioColumna(e.target.value)}
                         className="input-posicion"
                         min="0"
-                        max={parseInt(tamano.split('x')[0]) - 1}
+                        max={extraerTamanoTablero(tamano) - 1}
                     />
                 </div>
             </div>
             
-            {!animacionActiva ? (
+            {!mostrarDetener ? (
                 <button className="boton-iniciar" onClick={manejarIniciar}>
                     Iniciar
                 </button>
