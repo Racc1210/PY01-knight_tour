@@ -1,1 +1,0 @@
-// mantener seguimiento de las estadisticas de los movimientos

@@ -70,7 +70,7 @@ function App() {
                 
                 {/* Panel derecho: Controles de velocidad o mensaje */}
                 <div className="panel-derecho">
-                    {animacion.animacionActiva ? (
+                    {animacion.mostrarDetener ? (
                         <ControlVelocidad 
                             velocidadInicial={VELOCIDAD_INICIAL}
                             onPausar={animacion.pausar}
@@ -119,7 +119,8 @@ function App() {
                 <Controles 
                     onIniciar={manejarIniciar} 
                     onDetener={animacion.detener}
-                    animacionActiva={animacion.animacionActiva}
+                    mostrarDetener={animacion.mostrarDetener} 
+                    animacionActiva={animacion.animacionActiva} 
                     onCambioTamano={manejarCambioTamano}
                     posicionSeleccionada={tablero.posicionSeleccionada}
                     onCambioInput={manejarCambioInput}
