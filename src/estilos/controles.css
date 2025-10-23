@@ -141,3 +141,23 @@
 .boton-iniciar:active {
     transform: translateY(1px);
 }
+.boton-detener {
+    padding: 12px 24px;
+    background-color: #da3633;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boton-detener:hover {
+    background-color: #f85149;
+    transform: translateY(-1px);
+}
+
+.boton-detener:active {
+    transform: translateY(1px);
+}
