@@ -54,7 +54,7 @@ function CasillaVista({
             
             {tieneCaballo && (
                 <div className="caballo-icon">
-                    <img src={`${process.env.PUBLIC_URL}/caballo.png`} alt="Caballo" className="caballo-imagen" />
+                    <img src={process.env.PUBLIC_URL + '/caballo.png'} alt="Caballo" className="caballo-imagen" />
                 </div>
             )}
             
