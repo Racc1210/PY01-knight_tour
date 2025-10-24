@@ -58,7 +58,7 @@ export class Caballo {
     this.posicionActual = nuevaCasilla;
     
     
-    if (this.historial.length < 100_000_000) {
+    if (this.historial.length < 100_000) {
       this.historial.push(nuevaCasilla);
     }
     
@@ -81,7 +81,7 @@ export class Caballo {
       const anterior = this.solucion[this.solucion.length - 1];
 
       
-      if (this.historial.length < 100_000_000) {
+      if (this.historial.length < 100_000) {
         this.historial.push(anterior);
       }
 
