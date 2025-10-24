@@ -37,6 +37,7 @@ export function useEstadoTablero(tamanoInicial = 5) {
     setPosicionSeleccionada(null);
     setPosicionCaballo(null);
     limpiarTablero();
+    limpiarSolucion();
   };
 
   /**
@@ -56,6 +57,14 @@ export function useEstadoTablero(tamanoInicial = 5) {
     setCasillasBacktracking(new Set());
     setNumerosBacktracking(new Map());
     setPosiblesMovimientos(new Set());
+  };
+
+  /** Limpia la solución final almacenada. */
+  const limpiarSolucion = () => {
+    setSolucionFinal({
+      tamano: 0,
+      solucion: new Map(),
+    });
   };
 
   /**
@@ -117,6 +126,7 @@ export function useEstadoTablero(tamanoInicial = 5) {
     cambiarTamano,
     seleccionarPosicion,
     limpiarTablero,
+    limpiarSolucion,
     actualizarCasillasVisitadas,
     actualizarCasillasBacktracking,
     actualizarNumerosBacktracking,
