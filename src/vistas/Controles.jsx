@@ -78,7 +78,7 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                     value={tamano} 
                     onChange={(e) => manejarCambioTamano(e.target.value)}
                     className="selector-tamano"
-                    disabled={animacionActiva}
+                    disabled={animacionActiva || mostrarDetener}
                 >
                     <option value="5x5">5x5</option>
                     <option value="6x6">6x6</option>
@@ -101,6 +101,7 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                                 }
                             }}
                             className="checkbox-custom"
+                            disabled={mostrarDetener}
                         />
                         <label htmlFor="cerrado" className="checkbox-label">Cerrado</label>
                     </div>
@@ -117,6 +118,7 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                                 }
                             }}
                             className="checkbox-custom"
+                            disabled={mostrarDetener}
                         />
                         <label htmlFor="abierto" className="checkbox-label">Abierto</label>
                     </div>
@@ -134,6 +136,7 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                         className="input-posicion"
                         min="0"
                         max={extraerTamanoTablero(tamano) - 1}
+                        disabled={mostrarDetener}
                     />
                     <input
                         type="number"
@@ -143,6 +146,7 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                         className="input-posicion"
                         min="0"
                         max={extraerTamanoTablero(tamano) - 1}
+                        disabled={mostrarDetener}
                     />
                 </div>
             </div>

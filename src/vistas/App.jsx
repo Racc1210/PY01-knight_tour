@@ -33,7 +33,6 @@ function App() {
     };
 
     const manejarSeleccionCasilla = (fila, columna) => {
-        console.log('📍 Seleccionando casilla:', { fila, columna, animacionActiva: animacion.animacionActiva });
         if (!animacion.animacionActiva) {
             tablero.seleccionarPosicion(fila, columna);
         }
@@ -65,6 +64,7 @@ function App() {
                         numerosBacktracking={tablero.numerosBacktracking}
                         posiblesMovimientos={tablero.posiblesMovimientos}
                         onCasillaClick={manejarSeleccionCasilla}
+                        bloquearSeleccion={animacion.mostrarDetener}
                     />
                 </div>
                 
@@ -78,12 +78,14 @@ function App() {
                             onReiniciar={animacion.reiniciar}
                             onCambioVelocidad={animacion.cambiarVelocidad}
                             miniTableroSolucion={
-                                !animacion.sinSolucion ? (
+                                !animacion.sinSolucion && 
+                                tablero.solucionFinal.tamano === tablero.tamanoTablero && 
+                                tablero.solucionFinal.solucion.size > 0 ? (
                                     <MiniTablero 
                                         tamano={tablero.solucionFinal.tamano}
                                         solucion={tablero.solucionFinal.solucion}
                                     />
-                                ) : (
+                                ) : animacion.sinSolucion ? (
                                     <div style={{ 
                                         color: '#f56565', 
                                         textAlign: 'center', 
@@ -92,6 +94,16 @@ function App() {
                                     }}>
                                         No se encontró solución<br/>
                                         Mostrando proceso de búsqueda
+                                    </div>
+                                ) : (
+                                    <div style={{ 
+                                        color: '#8b949e', 
+                                        textAlign: 'center', 
+                                        padding: '20px',
+                                        fontSize: '14px'
+                                    }}>
+                                        Ejecutando algoritmo...<br/>
+                                        La solución aparecerá aquí
                                     </div>
                                 )
                             }

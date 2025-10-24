@@ -10,7 +10,8 @@ function TableroVista({
     casillasBacktracking = new Set(),
     numerosBacktracking = new Map(),
     posiblesMovimientos = new Set(),
-    onCasillaClick = null
+    onCasillaClick = null,
+    bloquearSeleccion = false // NUEVO PROP
 }) {
     
     const datosProcesados = procesarDatosTablero(
@@ -45,7 +46,6 @@ function TableroVista({
             >
                 {casillas.map(({ fila, columna }) => {
                     const datosCasilla = obtenerDatosCasilla(datosProcesados, fila, columna);
-                    
                     return (
                         <CasillaVista
                             key={`${fila}-${columna}`}
@@ -57,7 +57,7 @@ function TableroVista({
                             esBacktracking={datosCasilla.esBacktracking}
                             esPosibleMovimiento={datosCasilla.esPosibleMovimiento}
                             tieneCaballo={datosCasilla.tieneCaballo}
-                            onCasillaClick={onCasillaClick}
+                            onCasillaClick={bloquearSeleccion ? null : onCasillaClick}
                         />
                     );
                 })}
