@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/PY01-knight_tour/static/css/main.2f8c0b20.css",
+    "main.js": "/PY01-knight_tour/static/js/main.bcb596c7.js",
+    "static/js/528.c5879ffe.chunk.js": "/PY01-knight_tour/static/js/528.c5879ffe.chunk.js",
+    "index.html": "/PY01-knight_tour/index.html",
+    "main.2f8c0b20.css.map": "/PY01-knight_tour/static/css/main.2f8c0b20.css.map",
+    "main.bcb596c7.js.map": "/PY01-knight_tour/static/js/main.bcb596c7.js.map",
+    "528.c5879ffe.chunk.js.map": "/PY01-knight_tour/static/js/528.c5879ffe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f8c0b20.css",
+    "static/js/main.bcb596c7.js"
+  ]
+}
