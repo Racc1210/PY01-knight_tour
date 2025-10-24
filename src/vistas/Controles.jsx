@@ -79,7 +79,8 @@ function Controles({ onIniciar, onDetener, mostrarDetener = false, animacionActi
                     onChange={(e) => manejarCambioTamano(e.target.value)}
                     className="selector-tamano"
                     disabled={animacionActiva || mostrarDetener}
-                >
+                >   
+                    <option value="4x4">4x4</option>
                     <option value="5x5">5x5</option>
                     <option value="6x6">6x6</option>
                     <option value="7x7">7x7</option>
