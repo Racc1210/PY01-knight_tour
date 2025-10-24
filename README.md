@@ -13,6 +13,59 @@ Segundo semestre de 2025 - Grupo 60
 
 ---
 
+## Tecnologías Utilizadas
+
+### Frontend
+
+- **React** - Biblioteca de JavaScript para construir interfaces de usuario
+- **Vite** - Herramienta de construcción y desarrollo rápido
+- **HTML5** - Estructura y marcado de la aplicación web
+- **CSS3** - Estilos y diseño responsivo con variables CSS
+
+### Lenguajes de Programación
+
+- **JavaScript** - Lenguaje principal de desarrollo
+- **JSX** - Sintaxis de JavaScript extendida para React
+
+### Herramientas de Desarrollo
+
+- **ESLint** - Linter para mantener calidad del código
+- **npm** - Gestor de paquetes y dependencias
+- **Git** - Control de versiones
+
+### Algoritmos y Técnicas
+
+- **Algoritmo Backtracking** - Técnica de búsqueda exhaustiva y sistemática para resolver problemas que implican restricciones.
+- **Recorrido del Caballo (Knight’s Tour)** 
+- **Programación Funcional** - Paradigma utilizado en componentes React
+- **Hooks de React** - Gestión de estado con `useState`
+
+## Ejecución del Programa
+
+Se puede ingresar a la pagina por medio de este link:
+
+https://racc1210.github.io/PY01-knight_tour/
+
+### Instrucciones de Uso
+
+#### Paso 1: Configurar el inicio del recorrido
+
+- Ingreasr el tamaño del tablero 
+- Seleccionar el tipo de recorrido (abierto - cerrado)
+- Seleccionar la posicion inicial del caballo, ya sea en numeración o seleccionando la casilla en el tablero
+
+#### Paso 2: Ejecutar el Algoritmo
+
+-Hacer click en el boton "Iniciar" color verde
+-El programa iniciara el algoritmo del punto de partida, analiza si existe solucion o no, una vez hecho el analisis el caballo iniciara el recorrido en la interfaz.
+
+#### Paso 3: Resultados
+
+- **Panel izquierdo | Estadísticas**: Tiempo de ejecución, movimientos, retrocesos, progreso.
+- **Panel derecho**: Velocidad de movimiento ajustable para ver el recorrido del caballo, boton de pausa o reinicio y la solución final *SI existe*.
+
+---
+
 ## Bitacora
 
 - **1 de octubre a 15 de octubre**: En estos días nos dedicamos a aprender la sintaxis de JavaScript y React,  
