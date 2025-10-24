@@ -1,13 +1,12 @@
 /**
  * @fileoverview Controlador para procesar los datos del tablero antes de mostrarlos en la vista.
- * Implementa la lógica MVC separando el procesamiento de datos de la presentación.
  */
 
 /**
  * Procesa los datos del estado del tablero para la vista.
  *
- * @param {number} tamano Tamaño del tablero (número de filas y columnas).
- * @param {?Object} posicionCaballo Posición actual del caballo, con {fila, columna}.
+ * @param {number} tamano Tamaño del tablero.
+ * @param {?Object} posicionCaballo Posición actual del caballo.
  * @param {!Map<string, number>} casillasVisitadas Casillas visitadas con sus números.
  * @param {!Set<string>} casillasBacktracking Casillas marcadas en retroceso.
  * @param {!Set<string>} posiblesMovimientos Casillas disponibles como próximos movimientos.

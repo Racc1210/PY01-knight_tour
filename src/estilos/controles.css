@@ -52,7 +52,6 @@
     gap: 6px;
 }
 
-/* Estilos personalizados para checkboxes similares al ejemplo */
 .checkbox-custom {
     appearance: none;
     width: 18px;
@@ -65,7 +64,7 @@
     transition: all 0.2s ease;
 }
 
-.checkbox-custom:hover {
+.checkbox-custom:hover:not(:disabled) {
     border-color: #58a6ff;
     background-color: rgba(88, 166, 255, 0.1);
 }
@@ -86,12 +85,35 @@
     font-weight: bold;
 }
 
+.checkbox-custom:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .checkbox-label {
     font-size: 13px;
     color: #8b949e;
     cursor: pointer;
     user-select: none;
     font-weight: 500;
+}
+
+.posicion-inputs-container {
+    display: flex;
+    gap: 12px;
+}
+
+.posicion-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-label {
+    font-size: 12px;
+    color: #8b949e;
+    font-weight: 500;
+    min-width: 50px;
 }
 
 .posicion-inputs {
@@ -111,7 +133,7 @@
     transition: all 0.2s ease;
 }
 
-.input-posicion:hover {
+.input-posicion:hover:not(:disabled) {
     border-color: #58a6ff;
 }
 
@@ -119,6 +141,11 @@
     outline: none;
     border-color: #58a6ff;
     box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
+}
+
+.input-posicion:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .boton-iniciar {
