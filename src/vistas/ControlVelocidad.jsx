@@ -9,7 +9,7 @@ function ControlVelocidad({
     onReiniciar = null,
     miniTableroSolucion = null
 }) {
-    const velocidadesDisponibles = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000];
+    const velocidadesDisponibles = [1, 5, 10, 20, 30, 50, 100];
     const [velocidad, setVelocidad] = useState(velocidadInicial);
     const [pausado, setPausado] = useState(false);
 
@@ -58,17 +58,12 @@ function ControlVelocidad({
                     />
                     <div className="slider-marcas">
                         <span>1</span>
+                        <span>5</span>
                         <span>10</span>
                         <span>20</span>
                         <span>30</span>
-                        <span>40</span>
                         <span>50</span>
-                        <span>60</span>
-                        <span>70</span>
-                        <span>80</span>
-                        <span>90</span>
                         <span>100</span>
-                        <span>1000</span>
 
                     </div>
                 </div>
