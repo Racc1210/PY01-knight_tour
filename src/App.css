@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
-}
+/* Estilos globales */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d1117;
+  color: #e6edf3;
 }
 
-.App-link {
-  color: #61dafb;
+.error-banner {
+  background-color: #da3633;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 1px solid #f85149;
+  animation: slide-down 0.3s ease-out;
 }
 
-@keyframes App-logo-spin {
+@keyframes slide-down {
   from {
-    transform: rotate(0deg);
+    transform: translateY(-100%);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
   }
+}
+
+.layout-principal {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 20px;
+}
+
+.panel-izquierdo {
+  width: 220px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.panel-central {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(22, 27, 34, 0.3);
+  border-radius: 12px;
+  border: 1px solid #30363d;
+  padding: 20px;
+}
+
+.panel-derecho {
+  width: 350px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+.panel-inferior {
+  background-color: #161b22;
+  border-top: 1px solid #30363d;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
 }
