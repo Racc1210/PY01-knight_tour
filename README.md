@@ -84,7 +84,7 @@ Sin solución 12 posiciones: (0,1), (0,3), (1,0), (1,2), (1,4), (2,1), (2,3), (3
 #### 6X6
 -En el recorrido abierto existe solución desde todas las posiciones.
 
--En el recorrido cerrado solo existe solución en 28 posiciones: (0,0), (0,1), (0,3), (0,4), (0,5), (1,1), (1,2), (1,3), (1,4),(1,5), (2,0), (2,2), (2,3), (3,0), (3,3), (3,4), (3,5), (4,5), (5,0), (5,1), (5,2), (5,4).
+-En el recorrido cerrado solo existe solución en 28 posiciones: (0,0), (0,1), (0,3), (0,4), (0,5), (1,1), (1,2), (1,3), (1,4),(1,5), (2,0), (2,2), (2,3), (3,0), (3,3), (3,4), (3,5), (4,5), (5,0), (5,1), (5,2), (5,3), (5,4).
 
 
 #### 7x7
