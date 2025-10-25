@@ -66,6 +66,30 @@ https://racc1210.github.io/PY01-knight_tour/
 
 ---
 
+## Soluciones y sin solución
+
+#### 4X4
+-No existe solución para ninguna posición en el recorrido abierto ni cerrado.
+
+
+#### 5X5
+-Existe solución desde 13 posiciones en el recorrido abierto:
+(0,0), (0,2), (0,4), (1,1), (1,3), (2,0), (2,2), (2,4), (3,1), (3,3), (4,0), (4,2), (4,4)
+
+Sin solución 12 posiciones: (0,1), (0,3), (1,0), (1,2), (1,4), (2,1), (2,3), (3,0), (3,2), (3,4), (4,1), (4,3)
+
+-En el recorrido cerrado no existe solución.
+
+
+#### 6X6
+-En el recorrido abierto existe solución desde todas las posiciones.
+
+-En el recorrido cerrado solo existe solución en 28 posiciones: (0,0), (0,1), (0,3), (0,4), (0,5), (1,1), (1,2), (1,3), (1,4),(1,5), (2,0), (2,2), (2,3), (3,0), (3,3), (3,4), (3,5), (4,5), (5,0), (5,1), (5,4).
+
+
+#### 7x7
+-Tanto como el recorrido cerrado y abierto existen soluciones posibles en casi todas las posiciones del tablero como punto inicial.
+
 ## Bitacora
 
 - **1 de octubre a 15 de octubre**: En estos días nos dedicamos a aprender la sintaxis de JavaScript y React,  
